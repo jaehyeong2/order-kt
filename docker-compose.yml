@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: order_local
+      POSTGRES_USER: order_local
+      POSTGRES_PASSWORD: order_local
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data2
+
+volumes:
+  postgres_data:
