@@ -6,14 +6,14 @@ import jakarta.persistence.*
 class Partner(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
-    var token: String,
+    var token: String?,
     var name: String,
     @Column(unique = true)
     var bizNum: String,
     var email: String,
 
     @Enumerated(EnumType.STRING)
-    var status: Status
+    var status: Status = Status.ENABLE
 ) {
     enum class Status(status: String) {
         ENABLE("활성화"), DISABLE("비활성화");
