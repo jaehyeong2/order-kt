@@ -2,15 +2,13 @@ package jjfactory.order.presentation.partner
 
 import jjfactory.core.common.response.CommonResponse
 import jjfactory.order.application.partner.PartnerFacade
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RequestMapping("/partner")
 @RestController
 class PartnerController(
-    private val partnerFacade: PartnerFacade
+    private val partnerFacade: PartnerFacade,
+    private val partnerDtoMapper: PartnerDtoMapper
 ) {
     @PostMapping
     fun post(@RequestBody registerRequest: PartnerDto.CreateRequest): CommonResponse<Any> {
@@ -18,11 +16,13 @@ class PartnerController(
         return CommonResponse(partnerFacade.register(command));
     }
 
-    fun get() {
-
+    @GetMapping("/{id}")
+    fun get(@PathVariable id: Long): CommonResponse<PartnerDto.DetailView> {
+        return CommonResponse(partnerDtoMapper.of(partnerFacade.get(id)))
     }
 
-    fun getList() {
-
+    @GetMapping
+    fun get(token: String): CommonResponse<PartnerDto.DetailView> {
+        return CommonResponse(partnerDtoMapper.of(partnerFacade.get(token)))
     }
 }

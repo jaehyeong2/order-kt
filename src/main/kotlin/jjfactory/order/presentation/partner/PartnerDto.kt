@@ -18,22 +18,13 @@ class PartnerDto {
         }
     }
 
-    data class View(
+    data class DetailView(
         val id: Long?,
         val token: String?,
         val name: String,
         val bizNum: String,
         val email: String,
         val status: Partner.Status
-    ) {
-        constructor(partner: Partner) : this(
-            id = partner.id,
-            token = partner.token,
-            name = partner.name,
-            bizNum = partner.bizNum,
-            email = partner.email,
-            status = partner.status
-        )
-    }
+    )
 
 }
