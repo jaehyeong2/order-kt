@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional
 @Component
 class PartnerServiceImpl(
     private val partnerReader: PartnerReader,
-    private val partnerStore: PartnerStore,
+    private val partnerWriter: PartnerWriter,
     private val partnerInfoMapper: PartnerInfoMapper
 ) : PartnerService {
 
@@ -18,7 +18,7 @@ class PartnerServiceImpl(
 
     @Transactional
     override fun register(command: PartnerCommand) {
-        partnerStore.store(command.toEntity())
+        partnerWriter.write(command.toEntity())
     }
 
     @Transactional(readOnly = true)

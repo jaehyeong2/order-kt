@@ -19,4 +19,11 @@ class Partner(
         ENABLE("활성화"), DISABLE("비활성화");
     }
 
+    fun enable(){
+        status = Status.ENABLE
+    }
+
+    fun disable(){
+        status = Status.DISABLE
+    }
 }

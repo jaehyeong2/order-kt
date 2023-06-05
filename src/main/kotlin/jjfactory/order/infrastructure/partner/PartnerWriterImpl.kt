@@ -1,14 +1,14 @@
 package jjfactory.order.infrastructure.partner
 
 import jjfactory.order.domain.partner.Partner
-import jjfactory.order.domain.partner.PartnerStore
+import jjfactory.order.domain.partner.PartnerWriter
 import org.springframework.stereotype.Component
 
 @Component
-class PartnerStoreImpl(
+class PartnerWriterImpl(
     private val partnerRepository: PartnerRepository
-) : PartnerStore {
-    override fun store(partner: Partner) {
+) : PartnerWriter {
+    override fun write(partner: Partner) {
         //todo 예외처리
 
         partnerRepository.save(partner)
