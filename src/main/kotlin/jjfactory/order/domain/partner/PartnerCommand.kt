@@ -1,5 +1,7 @@
 package jjfactory.order.domain.partner
 
+import jjfactory.core.common.util.TokenGenerator
+
 class PartnerCommand(
     val name: String,
     var bizNum: String,
@@ -8,7 +10,7 @@ class PartnerCommand(
     fun toEntity(): Partner {
         return Partner(
             null,
-            null,
+            TokenGenerator.randomCharacterWithPrefix("ptn_"),
             name,
             bizNum,
             email,

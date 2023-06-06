@@ -6,7 +6,7 @@ import jakarta.persistence.*
 class Partner(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
-    var token: String?,
+    var token: String,
     var name: String,
     @Column(unique = true)
     var bizNum: String,
